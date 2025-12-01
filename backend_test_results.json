@@ -1,0 +1,40 @@
+{
+  "timestamp": "2025-12-01T07:23:23.782663",
+  "summary": {
+    "passed": 5,
+    "total": 6,
+    "success_rate": 0.8333333333333334
+  },
+  "tests": [
+    {
+      "test": "API Health Check",
+      "success": true,
+      "details": "Status: 200, Response: {'message': 'Cattle & Buffalo Breed Recognition API'}"
+    },
+    {
+      "test": "Breeds Endpoint",
+      "success": true,
+      "details": "Status: 200, Cattle breeds: 9, Buffalo breeds: 6"
+    },
+    {
+      "test": "CORS Headers",
+      "success": false,
+      "details": "Status: 405, CORS headers: []"
+    },
+    {
+      "test": "Breed Recognition - Missing Fields",
+      "success": true,
+      "details": "Status: 422"
+    },
+    {
+      "test": "Breed Recognition - Invalid Data",
+      "success": true,
+      "details": "Status: 200, Error handled: Failed to generate chat completion: litellm.BadRequestError: OpenAIException - litellm.BadRequestError: GeminiException BadRequestError - {\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Invalid value at 'contents[0].parts[1].inline_data.data' (TYPE_BYTES), Base64 decoding failed for \\\"invalid_base64\\\"\",\n    \"status\": \"INVALID_ARGUMENT\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.BadRequest\",\n        \"fieldViolations\": [\n          {\n            \"field\": \"contents[0].parts[1].inline_data.data\",\n            \"description\": \"Invalid value at 'contents[0].parts[1].inline_data.data' (TYPE_BYTES), Base64 decoding failed for \\\"invalid_base64\\\"\"\n          }\n        ]\n      }\n    ]\n  }\n}\n. Received Model Group=gemini/gemini-2.5-flash\nAvailable Model Group Fallbacks=None"
+    },
+    {
+      "test": "Breed Recognition - Valid Image",
+      "success": true,
+      "details": "Status: 200, Success: False, Error: Failed to generate chat completion: litellm.BadRequestError: OpenAIException - litellm.BadRequestError: GeminiException BadRequestError - {\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Unable to process input image. Please retry or report in https://developers.generativeai.google/guide/troubleshooting\",\n    \"status\": \"INVALID_ARGUMENT\"\n  }\n}\n. Received Model Group=gemini/gemini-2.5-flash\nAvailable Model Group Fallbacks=None"
+    }
+  ]
+}
